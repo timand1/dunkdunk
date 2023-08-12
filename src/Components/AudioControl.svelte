@@ -12,7 +12,7 @@
     trance: 'http://stream.open.fm/7',
     dunk: 'https://stream.open.fm/128',
     electric: 'https://stream.open.fm/94',
-    svennis: '/dist/assets/happysven.m4a'
+    svennis: '/assets/happysven.m4a'
   }
   let audioFile = null;
   let source = null;
@@ -25,7 +25,7 @@
       audioFile.pause();
     } else {
       if(!url) {
-        url = "/dist/assets/happysven.m4a";
+        url = "/assets/happysven.m4a";
       }
       audioFile = new Audio(url);
       audioFile.crossOrigin = "anonymous";
@@ -104,7 +104,7 @@
 </div>
 
 <svg class="music" on:click={openModal} xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...$$props}><circle cx="16" cy="17" r="1" fill="#827d7d" opacity=".3"/><path fill="#827d7d" d="M3 10h12v2H3v-2zm0 4h8v2H3v-2zm0-8h12v2H3V6zm14 8.18c-.31-.11-.65-.18-1-.18c-1.66 0-3 1.34-3 3s1.34 3 3 3s3-1.34 3-3V8h3V6h-5v8.18z"/></svg>
-  <audio src="/dist/assets/happysven.m4a" controls></audio>
+  <audio src="/assets/happysven.m4a" controls></audio>
   <button class="button" class:paused={playing} on:click={playAudio}></button>
   
 <style lang="scss">
