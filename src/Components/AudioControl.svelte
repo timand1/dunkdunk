@@ -99,16 +99,32 @@
   }
 </script>
 <div >
-  <Modal bind:open right={false} listItems={songList} active={activeMusic} parentFunction={updateMusic} />
+  <p class="active"><span>Audio</span> {activeMusic}</p>
+  <Modal bind:open right={false} listItems={songList} active={activeMusic} width=300 parentFunction={updateMusic} />
 </div>
 
-<svg class="music" on:click={openModal} xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...$$props}><circle cx="16" cy="17" r="1" fill="#827d7d" opacity=".3"/><path fill="#827d7d" d="M3 10h12v2H3v-2zm0 4h8v2H3v-2zm0-8h12v2H3V6zm14 8.18c-.31-.11-.65-.18-1-.18c-1.66 0-3 1.34-3 3s1.34 3 3 3s3-1.34 3-3V8h3V6h-5v8.18z"/></svg>
+<svg class="music" on:click={openModal} xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...$$props}><circle cx="16" cy="17" r="1" fill="currentColor" opacity=".3"/><path fill="currentColor" d="M3 10h12v2H3v-2zm0 4h8v2H3v-2zm0-8h12v2H3V6zm14 8.18c-.31-.11-.65-.18-1-.18c-1.66 0-3 1.34-3 3s1.34 3 3 3s3-1.34 3-3V8h3V6h-5v8.18z"/></svg>
   <audio src="https://stream.open.fm/41" controls></audio>
   <button class="button" class:paused={playing} on:click={playAudio}></button>
   
 <style lang="scss">
   audio {
     display: none;
+  }
+
+  .active {
+    position: absolute;
+    top: 0.1rem;
+    left: 2em;
+    color: #2e2e2e;
+    background-color: #dad8d8d5;
+    backdrop-filter: blur(4em);
+    padding: 4px;
+    border-radius: 4px;
+    span {
+      color: #141414;
+      font-weight: 600;
+    }
   }
   
   .music {
@@ -117,10 +133,10 @@
     bottom: 1em;
     left: 2em;
     width: 1.5em;
-    color: #202020;
+    color: #686666;
     height: 1.5em;
     &:hover {
-      color: #404040;
+      color: #827d7d;
     }
   }
 

@@ -4,13 +4,14 @@
     export let active
     export let parentFunction;
     export let right
+    export let width
     
 
 
 </script>
 
 {#if open}
-    <div class="modal" class:left={right === false} class:right={right}>
+    <div class="modal" class:left={right === false} style="width:{width}px" class:right={right}>
         <div class="modal-container">
             {#each Object.keys(listItems) as key}
             <button class:active={key === active} on:click={parentFunction(key)}>
@@ -30,7 +31,7 @@
         bottom: 2.2rem;
         right: 3.3rem;
         max-height: 400px;
-        width: 400px;
+        // width: 400px;
         overflow-y: auto;
         box-shadow:
             1.6px 1.2px 33.1px rgba(0, 0, 0, 0.062),
@@ -66,7 +67,8 @@
                 position: relative;
                 svg {
                 position: absolute;
-                left : 0.5rem;
+                // left : 0.5rem;
+                left:calc(-50% + 1rem);
                 top: calc(50% - 0.5rem);
                 }
             }

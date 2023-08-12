@@ -126,7 +126,7 @@
     <SelectSong Visualizer={visualizer} audioContext={audioContext} />
   {/if}
   <div >
-    <Modal bind:open right={true} listItems={presets} active={activePreset} parentFunction={handleSelectChange} />
+    <Modal bind:open right={true} listItems={presets} active={activePreset} parentFunction={handleSelectChange} width=400/>
   </div>
   <canvas id="canvas" />
   {#if open === false}
@@ -146,11 +146,11 @@
     cursor: pointer;
     bottom: 1em;
     right: 2em;
-    width: 1.5em;
-    color: #202020;
-    height: 1.5em;
+    width: 2em;
+    color: #686666;
+    height: 2em;
     &:hover {
-      color: #404040;
+      color: #827d7d;
     }
   }
   .active {
