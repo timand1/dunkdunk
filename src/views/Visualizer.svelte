@@ -16,7 +16,6 @@
     let fullscreen: boolean = false;
     let darkCircle: null | Preset = null
     let activePreset;
-    let placeholder = 'Select preset'
     const visualizerInitializer = async () => {
       visualizer.setRendererSize(width, height);
       
@@ -87,11 +86,8 @@
         width,
         height
       });
-      console.log(visualizer)
       darkCircle = visualizer.renderer.preset as Preset
       activePreset = 'darkCircle'
-      console.log(darkCircle)
-      console.log(typeof presets)
       presets = {darkCircle, ...presets}
       
       visualizerInitializer();
@@ -126,12 +122,11 @@
     }
   }
 </script>
-  
   {#if visualizer && audioContext}
     <SelectSong Visualizer={visualizer} audioContext={audioContext} />
   {/if}
   <div >
-    <Modal bind:open listItems={presets} activePreset={activePreset} parentFunction={handleSelectChange} />
+    <Modal bind:open right={true} listItems={presets} active={activePreset} parentFunction={handleSelectChange} />
   </div>
   <canvas id="canvas" />
   {#if open === false}
