@@ -64,9 +64,6 @@
     background-color: #ffffff3f;
     backdrop-filter: blur(4em);
     border-radius: 50%;
-    &:hover {
-      color: red;
-    }
   }
 
   .button {

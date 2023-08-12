@@ -30,7 +30,6 @@
         right: 3.3rem;
         height: 400px;
         width: 400px;
-        background-color: red;
         overflow-x: hidden;
         overflow-y: scroll;
         box-shadow:
