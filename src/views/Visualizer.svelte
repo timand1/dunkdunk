@@ -16,6 +16,7 @@
     let fullscreen: boolean = false;
     let darkCircle: null | Preset = null
     let activePreset;
+    let randomizer: boolean = false
     const visualizerInitializer = async () => {
       visualizer.setRendererSize(width, height);
       
@@ -33,22 +34,24 @@
         resize();
       }, 1000 / 120);
     };
-  
-    // const randomPresets = () => {
-    //   let tempPresets = presets;
-    //   if (Object.keys(tempPresets).length === 0) {
-    //     tempPresets = butterchurnPresets.getPresets();
-    //   }
-    //   let randomPreset = randomProperty(tempPresets);
-    //   if (visualizer) {
-    //     visualizer.loadPreset(tempPresets[randomPreset], 2);
-    //     delete tempPresets[randomPreset];
-    //     presets = tempPresets;
-    //   }
-    //   setTimeout(() => {
-    //     randomPresets();
-    //   }, 30000);
-    // };
+    let randomTimer
+    const randomPresets = () => {
+      randomizer = true
+      let randomPreset = randomProperty(presets);
+      activePreset = randomPreset
+      
+      if (visualizer) {
+        visualizer.loadPreset(presets[randomPreset], 0);
+      }
+      randomTimer = setTimeout(() => {        
+        randomPresets();
+      }, 15000);
+    };
+
+    const stopRandom = () => {
+      randomizer = false
+      clearTimeout(randomTimer)
+    }
   
     const randomProperty = (obj) => {
       const key = Object.keys(obj);
@@ -135,20 +138,53 @@
   <svg class="settings" on:click={openModal} xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...$$props}><path fill="#6a2525" d="M8.27 3L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3M8.41 7L12 10.59L15.59 7L17 8.41L13.41 12L17 15.59L15.59 17L12 13.41L8.41 17L7 15.59L10.59 12L7 8.41"/></svg>
   {/if}
   <p class="active"><span>Preset</span> {activePreset}</p>
-
+  <div class="random" class:random-active={randomizer}>
+    <svg on:click={randomizer ? stopRandom : randomPresets} xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...$$props}><path fill="currentColor" d="m17 3l5.25 4.5L17 12l5.25 4.5L17 21v-3h-2.74l-2.82-2.82l2.12-2.12L15.5 15H17V9h-1.5l-9 9H2v-3h3.26l9-9H17V3M2 6h4.5l2.82 2.82l-2.12 2.12L5.26 9H2V6Z"/></svg>
+  </div>
 
 <style lang=scss scoped>
   canvas {
     z-index: -1;
   }
+  .random {
+    position: absolute;
+    cursor: pointer;
+    bottom: 0.7em;
+    right: 4em;
+    svg {
+      color: #686666;
+      width: 1.5em;
+      height: 1.5em;
+      &:hover {
+        color: #827d7d;
+      }
+    }
+      &::before {
+      content: '';
+      position: absolute;
+      left: 0; 
+      top: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgb(189, 58, 58);
+    }
+  }
+
+  .random-active.random {
+    &::before {
+      background-color: rgb(54, 163, 54);
+    }
+  }
+
   .settings{
     position: absolute;
     cursor: pointer;
     bottom: 1em;
     right: 2em;
-    width: 2em;
+    width: 1.5em;
+    height: 1.5em;
     color: #686666;
-    height: 2em;
     &:hover {
       color: #827d7d;
     }

@@ -52,6 +52,7 @@
             justify-content: space-evenly;
             button {
                 border: none;
+                cursor: pointer;
                 border-bottom: 1px solid gray;
                 padding: 8px 30px;
                 overflow-x: hidden;
