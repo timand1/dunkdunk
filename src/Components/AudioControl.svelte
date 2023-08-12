@@ -16,7 +16,7 @@
   let audioFile = null;
   let source = null;
   let playing = false;
-  let activeMusic = Object.keys(songList)[6]
+  let activeMusic = Object.keys(songList)[5]
   let url
   let open = false
   const radio = () => {
