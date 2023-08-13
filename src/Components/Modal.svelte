@@ -25,21 +25,16 @@
 {/if}
 
 <style lang="scss" scoped>
+    @use '../style/variables.scss';
     .modal {
         position: absolute;
         border-radius: 8px;
-        bottom: 2.2rem;
+        bottom: 2.8rem;
         right: 3.3rem;
         max-height: 400px;
         // width: 400px;
         overflow-y: auto;
-        box-shadow:
-            1.6px 1.2px 33.1px rgba(0, 0, 0, 0.062),
-            4.1px 3.1px 40.1px rgba(0, 0, 0, 0.089),
-            8.3px 6.4px 42.5px rgba(0, 0, 0, 0.111),
-            17.2px 13.1px 45.8px rgba(0, 0, 0, 0.138),
-            47px 36px 67px rgba(0, 0, 0, 0.2)
-        ;
+        box-shadow: variables.$box-shadow-base;
         &.left {
             left: 3.3rem;
         }
@@ -53,24 +48,27 @@
             button {
                 border: none;
                 cursor: pointer;
-                border-bottom: 1px solid gray;
+                border-bottom: 1px solid variables.$setting;
                 padding: 8px 30px;
                 overflow-x: hidden;
-                background-color: #202020;
-                color: #d3d0d0;
+                background-color: variables.$player;
+                color: variables.$primary-text;
                 &:hover {
-                    background-color: #404040;
+                    background-color: variables.$player-hover;
                     transition: 300ms;
                 }
             }
+            button:last-of-type {
+                border: none;
+            }
             .active {
-                background-color: #181818;
+                background-color: variables.$primary-hover;
                 position: relative;
                 svg {
-                position: absolute;
-                // left : 0.5rem;
-                left:calc(-50% + 1rem);
-                top: calc(50% - 0.5rem);
+                    position: absolute;
+                    // left : 0.5rem;
+                    left:calc(-50% + 1rem);
+                    top: calc(50% - 0.5em);
                 }
             }
         }

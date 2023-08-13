@@ -141,6 +141,9 @@
   </div>
 
 <style lang=scss scoped>
+  @use '../style/variables.scss';
+  @use '../style/mixins.scss';
+
   canvas {
     z-index: -1;
   }
@@ -150,11 +153,11 @@
     bottom: 0.7em;
     right: 4em;
     svg {
-      color: #686666;
+      color: variables.$setting;
       width: 1.5em;
       height: 1.5em;
       &:hover {
-        color: #827d7d;
+        color: variables.$setting-hover;
       }
     }
       &::before {
@@ -165,40 +168,20 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background-color: rgb(189, 58, 58);
+      background-color: variables.$inactive;
     }
   }
 
   .random-active.random {
     &::before {
-      background-color: rgb(54, 163, 54);
+      background-color: variables.$active;
     }
   }
 
-  .settings{
-    position: absolute;
-    cursor: pointer;
-    bottom: 1em;
-    right: 2em;
-    width: 1.5em;
-    height: 1.5em;
-    color: #686666;
-    &:hover {
-      color: #827d7d;
-    }
+  .settings {
+    @include mixins.setting-right();
   }
   .active {
-    position: absolute;
-    top: 0.1rem;
-    right: 2em;
-    color: #2e2e2e;
-    background-color: #dad8d8d5;
-    backdrop-filter: blur(4em);
-    padding: 4px;
-    border-radius: 4px;
-    span {
-      color: #141414;
-      font-weight: 600;
-    }
+    @include mixins.active-right();
   }
 </style>

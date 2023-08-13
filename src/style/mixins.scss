@@ -1,0 +1,47 @@
+@use '../style/variables.scss';
+
+@mixin active () {
+    position: absolute;
+    top: 0.1rem;
+    color: variables.$primary;
+    background-color: variables.$active-bg;
+    backdrop-filter: blur(4em);
+    padding: 4px;
+    border-radius: 4px;
+    span {
+      color: variables.$primary-hover;
+      font-weight: 600;
+    }
+}
+
+@mixin active-left ($left: 2em) {
+    @include active();
+    left: $left
+}
+
+@mixin active-right ($right: 2em) {
+    @include active();
+    right: $right
+}
+
+@mixin setting () {
+    position: absolute;
+    cursor: pointer;
+    bottom: 1.2em;
+    width: 1.5em;
+    color: variables.$setting;
+    height: 1.5em;
+    &:hover {
+      color: variables.$setting-hover;
+    }
+}
+
+@mixin setting-left ($left: 2em) {
+    @include setting();
+    left: $left;
+}
+
+@mixin setting-right ($right: 2em) {
+    @include setting();
+    right: $right;
+}

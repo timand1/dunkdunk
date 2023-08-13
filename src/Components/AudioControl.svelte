@@ -116,49 +116,16 @@
   <button class="button" class:paused={playing} on:click={playAudio}></button>
   
 <style lang="scss">
-  audio {
-    display: none;
-  }
+  @use '../style/variables.scss';
+  @use '../style/mixins.scss';
 
   .active {
-    position: absolute;
-    top: 0.1rem;
-    left: 2em;
-    color: #2e2e2e;
-    background-color: #dad8d8d5;
-    backdrop-filter: blur(4em);
-    padding: 4px;
-    border-radius: 4px;
-    span {
-      color: #141414;
-      font-weight: 600;
-    }
+    @include mixins.active-left();
   }
   
   .music {
-    position: absolute;
-    cursor: pointer;
-    bottom: 1em;
-    left: 2em;
-    width: 1.5em;
-    color: #686666;
-    height: 1.5em;
-    &:hover {
-      color: #827d7d;
-    }
+    @include mixins.setting-left();
   }
-
-  .controls {
-    position: absolute;
-    bottom: 1em;
-    left: calc(50vw - 20px);
-    border: none;
-    font-size: 4em;
-    background-color: #ffffff3f;
-    backdrop-filter: blur(4em);
-    border-radius: 50%;
-  }
-
 
   .button {
     position: absolute;
@@ -169,7 +136,7 @@
     box-sizing: border-box;
     width: 0;
     height: 50px;
-    border-color: transparent transparent transparent #202020;
+    border-color: transparent transparent transparent variables.$player;
     transition: 300ms all ease;
     cursor: pointer;
 
@@ -183,7 +150,7 @@
     }
 
     &:hover {
-      border-color: transparent transparent transparent #404040;
+      border-color: transparent transparent transparent variables.$player-hover;
     }
   }
 </style>
