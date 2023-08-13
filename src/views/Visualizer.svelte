@@ -103,10 +103,8 @@
     });
 
   const handleSelectChange = (preset) => {
-  activePreset = preset
-  visualizer.loadPreset(presets[preset], 1.0);
-  // startRenderer()
-
+    activePreset = preset
+    visualizer.loadPreset(presets[preset], 1.0);
   }
 
   const closeListener = () => {
